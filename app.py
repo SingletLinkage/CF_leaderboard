@@ -80,6 +80,9 @@ for user in users:
 
 
 @app.route('/')
+def home_page():
+    return render_template('users.html', users=users)
+
 @app.route('/users')
 def users_page():
     return render_template('new_users.html', users=users)
