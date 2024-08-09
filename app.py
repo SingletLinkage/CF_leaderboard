@@ -89,7 +89,11 @@ def users_page():
 
 @app.route('/leaderboard')
 def leaderboard_page():
-    return render_template('leaderboard.html', users=users)
+    return render_template('contest_leaderboard.html', users=users)
+
+@app.route('/fresher-leaderboard')
+def fresher_leaderboard_page():
+    return render_template('prob_leaderboard.html', users=users)
 
 if __name__ == '__main__':
     app.run(debug=True)
