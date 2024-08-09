@@ -1,7 +1,25 @@
 import requests
 import json
 
-getDetails = lambda handles: requests.get(f'https://codeforces.com/api/user.info?handles={";".join(handles)}').text
+headers = {
+    "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    'Cookie': '_ga_K230KVN22K=GS1.1.1700933127.1.1.1700934586.0.0.0; _ga=GA1.2.520676036.1700933127; X-User-Sha1=ee038a4867f79d01c66e117af04cdaf3215754b6; 39ce7=CFGrQzj5; JSESSIONID=AEE096EC3F19AE3D0F94B497AEF5D26D; evercookie_png=zdt9yx4idbfmpex3si; evercookie_etag=undefined; evercookie_cache=undefined; 70a7c28f3de=zdt9yx4idbfmpex3si; lastOnlineTimeUpdaterInvocation=1723231685776; cf_clearance=OW8PL.F1RUSpjnUfUy7OeQ9grS78CoQJs9Y0l.9oaD4-1723230904-1.0.1.1-tQqCHvzcxr_ikOAT4vp3vMbNkVL_sMMdwrFlZkRVgn.S1IupoEJA.kzuEoUR107vNostECAVX3742Qb2kQhHcg'
+    
+}
+
+proxy = [
+    {'http' : '103.130.130.130.179:8080'},
+    {'http' : '134.209.67.109:19752'}
+]
+
+
+def getDetails(handles): 
+    session = requests.session()
+    _ = session.get(f'https://codeforces.com/api/user.info?handles={";".join(handles)}', headers=headers, proxies=proxy[1]).text
+    session.close()
+    return _ 
 
 
 def getUserList(handles):
@@ -23,91 +41,8 @@ def getUserList(handles):
 
 
 if __name__ == '__main__':
-    getUserList(['qchaos', 'mst_molik', 'CrazyWarlord'])
-
-    
-    users = [
-    {
-        'avatar': 'https://userpic.codeforces.org/no-avatar.jpg',
-        'contribution': 10,
-        'country': 'India',
-        'firstName': 'Arka',
-        'friendOfCount': 29,
-        'handle': 'qchaos',
-        'lastOnlineTimeSeconds': 1723190742,
-        'maxRank': 'pupil',
-        'maxRating': 1340,
-        'organization': 'IIT Mandi',
-        'rank': 'pupil',
-        'rating': 1340,
-        'registrationTimeSeconds': 1700933170,
-        'titlePhoto': 'https://userpic.codeforces.org/no-title.jpg'
-    },
-    {
-        'avatar': 'https://userpic.codeforces.org/no-avatar.jpg',
-        'contribution': 5,
-        'country': 'United States',
-        'firstName': 'John',
-        'friendOfCount': 112,
-        'handle': 'johndoe123',
-        'lastOnlineTimeSeconds': 1723190341,
-        'maxRank': 'specialist',
-        'maxRating': 1520,
-        'organization': 'MIT',
-        'rank': 'specialist',
-        'rating': 1485,
-        'registrationTimeSeconds': 1690930112,
-        'titlePhoto': 'https://userpic.codeforces.org/no-title.jpg'
-    },
-    {
-        'avatar': 'https://userpic.codeforces.org/no-avatar.jpg',
-        'contribution': 0,
-        'country': 'Russia',
-        'firstName': 'Ivan',
-        'friendOfCount': 300,
-        'handle': 'ivan_the_coder',
-        'lastOnlineTimeSeconds': 1723190655,
-        'maxRank': 'candidate master',
-        'maxRating': 2100,
-        'organization': 'Moscow State University',
-        'rank': 'expert',
-        'rating': 2040,
-        'registrationTimeSeconds': 1680932198,
-        'titlePhoto': 'https://userpic.codeforces.org/no-title.jpg'
-    },
-    {
-        'avatar': 'https://userpic.codeforces.org/no-avatar.jpg',
-        'contribution': 15,
-        'country': 'China',
-        'firstName': 'Wei',
-        'friendOfCount': 500,
-        'handle': 'wei_supercoder',
-        'lastOnlineTimeSeconds': 1723190123,
-        'maxRank': 'grandmaster',
-        'maxRating': 2800,
-        'organization': 'Tsinghua University',
-        'rank': 'grandmaster',
-        'rating': 2750,
-        'registrationTimeSeconds': 1670931170,
-        'titlePhoto': 'https://userpic.codeforces.org/no-title.jpg'
-    },
-    {
-        'avatar': 'https://userpic.codeforces.org/no-avatar.jpg',
-        'contribution': 7,
-        'country': 'India',
-        'firstName': 'Rahul',
-        'friendOfCount': 50,
-        'handle': 'rahulcodes',
-        'lastOnlineTimeSeconds': 1723190201,
-        'maxRank': 'expert',
-        'maxRating': 1800,
-        'organization': 'IIT Delhi',
-        'rank': 'expert',
-        'rating': 1780,
-        'registrationTimeSeconds': 1660933170,
-        'titlePhoto': 'https://userpic.codeforces.org/no-title.jpg'
-    }
-    ]
+    users = getUserList(['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN'])
+    print(users)
 
     # print(sorted(users, key=lambda user: user['rating'], reverse=True))
 
