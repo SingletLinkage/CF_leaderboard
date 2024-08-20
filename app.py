@@ -3,10 +3,12 @@ from getUserDetails import getUserList
 from apiHandler import get_url_using_auth, api_custom_call
 from getSolvedProblems import getSolvedProblemScore
 from pprint import pprint
+import time
 
 app = Flask(__name__)
+PROB_COUNT_START_TIME = 1723260000
 
-handles = ['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN']
+handles = ['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN']  # add other handles here
 method_name = 'user.info'
 params = {
     'handles': ';'.join(handles)
@@ -17,6 +19,7 @@ params = {
 # response = api_custom_call(url=url)
 # users = sorted(response, key=lambda user: user['rating'], reverse=True)
 
+print('Fetching Data...')  # will take quite some time depending on the number of handles
 users = getUserList(handles=handles)
 # users = sorted(users, key=lambda user: user['rating'], reverse=True)
 
@@ -26,9 +29,10 @@ for user in users:
     if 'firstName' not in user:
         user['firstName'] = user['handle']
 
-    user['score'] = getSolvedProblemScore(user['handle'])
+    user['score'] = getSolvedProblemScore(user['handle'], PROB_COUNT_START_TIME)
+    print(f'Loaded data for {user["handle"]} successfully!')
 
-# pprint(users)
+print('All User data loaded!')
 
 @app.route('/')
 def home_page():
@@ -38,12 +42,12 @@ def home_page():
 def users_page():
     return render_template('new_users.html', users=users)
 
-@app.route('/leaderboard')
-def leaderboard_page():
+@app.route('/ratings')
+def ratings_page():
     return render_template('contest_leaderboard.html', users=sorted(users, key=lambda user: user['rating'], reverse=True))
 
-@app.route('/fresher-leaderboard')
-def fresher_leaderboard_page():
+@app.route('/leaderboard')
+def leaderboard_page():
     return render_template('prob_leaderboard.html', users=sorted(users, key=lambda user: user['score'], reverse=True))
 
 if __name__ == '__main__':
