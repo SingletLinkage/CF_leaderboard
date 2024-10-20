@@ -2,6 +2,7 @@ import typing
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import numpy as np
 
 def scrapeDataFromSpreadsheet(link: str) -> typing.List[typing.List[str]]:
     html = requests.get(link).text
@@ -11,7 +12,7 @@ def scrapeDataFromSpreadsheet(link: str) -> typing.List[typing.List[str]]:
     return rows
 
 
-link = 'https://docs.google.com/spreadsheets/d/1pi32lljISYr9mETR9SePL_poXjyHJ_Q2zMsIc8zNQAw/edit?usp=sharing'
+link = 'https://docs.google.com/spreadsheets/d/14Ix71pdHdTtYryHC-7AGmJs-70MnzlbWgizjxJuFIdU/edit?usp=sharing'
 df_list = pd.read_html(link)
 
-print(df_list[0])
+print([i for i in df_list[0]['E'][2:] if str(i) != 'nan'])

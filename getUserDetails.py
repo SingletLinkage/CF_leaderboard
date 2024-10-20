@@ -42,7 +42,7 @@ def getUserList(handles):
     if response['status'] != 'OK':
         print(response['comment'])
     else:
-        return sorted(response['result'], key=lambda user: user['rating'], reverse=True)
+        return sorted(response['result'], key=lambda user: user.get('rating', 0), reverse=True)
 
 
 if __name__ == '__main__':
