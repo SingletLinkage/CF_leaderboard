@@ -15,4 +15,14 @@ def scrapeDataFromSpreadsheet(link: str) -> typing.List[typing.List[str]]:
 link = 'https://docs.google.com/spreadsheets/d/14Ix71pdHdTtYryHC-7AGmJs-70MnzlbWgizjxJuFIdU/edit?usp=sharing'
 df_list = pd.read_html(link)
 
-print([i for i in df_list[0]['E'][2:] if str(i) != 'nan'])
+lst = list(set([i for i in df_list[0]['E'][2:] if str(i) != 'nan']))
+
+black = ['_akanksha36']
+
+for i in black:
+    try:
+        lst.remove(i)
+    except ValueError:
+        pass
+
+print(lst)

@@ -7,7 +7,8 @@ import time
 app = Flask(__name__)
 PROB_COUNT_START_TIME = 1729449000
 
-handles = ['HoneyGupta', 'Divyansh21j', '141GHOST', 'Riddhi17', 'tvishajaiswal2696', 'Darkrai123', 'Nirupam', 'shubhamanand299', 'utkarshsahu123', 'Priansh_master', 'saurav10codes', 'EpicCoder03', 'AkshitaDangi2015', 'Ojasvijain', 'kdshacker359', 'DivyanshJindal', 'KingGarvit', 'suhavyyy', 'utkarshBansal', 'QuantumJunkie', 'Chirag352', 'gargsatvik06', 'SyntaxSorcerery', 'ArhamJain2506', 'timeless_tech_crafter', 'sakshamKundu', 'vipreshgupta', 'HellSlayer42', 'XeroRazer', 'Mr.N00B', 'JapneetKohli187', 'CP_GOD_', 'anishkumar96465213', 'ekansh007', 'mahak_ag', 'akshat_idk_29', 'anshika476', 'Akshat_ansh', 'Harmonixar', 'abhayxd', 'stellar_87', 'programmer_byte', 'ps2006', 'Dhanad', 'te_am0', 'hoda_goes_boom', 'lightman0', 'ananyaGawade', 'AmanGuptacd', 'kumaraman6012', 'Harsh_Yadav1729', 'Kartavya_Suryawanshi']
+handles = ['HoneyGupta', 'Divyansh21j', '141GHOST', 'Riddhi17', 'tvishajaiswal2696', 'Darkrai123', 'Nirupam', 'shubhamanand299', 'utkarshsahu123', 'Priansh_master', 'saurav10codes', 'EpicCoder03', 'AkshitaDangi2015', 'Ojasvijain', 'kdshacker359', 'DivyanshJindal', 'KingGarvit', 'suhavyyy', 'utkarshBansal', 'QuantumJunkie', 'Chirag352', 'gargsatvik06', 'SyntaxSorcerery', 'ArhamJain2506', 'timeless_tech_crafter', 'sakshamKundu', 'vipreshgupta', 'HellSlayer42', 'XeroRazer', 'Mr.N00B', 'JapneetKohli187', 'CP_GOD_', 'anishkumar96465213', 'ekansh007', 'mahak_ag', 'akshat_idk_29', 'anshika476', 'Akshat_ansh', 'Harmonixar', 'abhayxd', 'stellar_87', 'programmer_byte', 'ps2006', 'Dhanad', 'te_am0', 'hoda_goes_boom', 'lightman0', 'ananyaGawade', 'AmanGuptacd', 'kumaraman6012', 'Harsh_Yadav1729', 'Kartavya_Suryawanshi', 'lav38', 'Divyansh4078', 'aditya_gamerz', 'Dev314159265358', 'gauravrathod140706', 'Devil666', 'Amank001', 'ABHI0809', 'sahniwesh', 'manan0005', 'mdfarhan01', 'JB_GOAT']
+handles = ['RADE_ME_NAP']
 method_name = 'user.info'
 params = {
     'handles': ';'.join(handles)
@@ -47,7 +48,7 @@ def ratings_page():
 
 @app.route('/leaderboard')
 def leaderboard_page():
-    return render_template('prob_leaderboard.html', users=sorted(users, key=lambda user: user.get('rating', 0), reverse=True))
+    return render_template('prob_leaderboard.html', users=sorted(users, key=lambda user: user.get('score', 0), reverse=True))
 
 if __name__ == '__main__':
     app.run(debug=True)
