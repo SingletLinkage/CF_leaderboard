@@ -6,9 +6,9 @@ from pprint import pprint
 import time
 
 app = Flask(__name__)
-PROB_COUNT_START_TIME = 1723260000
+PROB_COUNT_START_TIME = 1723260000 # 1729449000
 
-handles = ['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN']  # add other handles here
+handles = ['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN', 'mst_molik', 'b23230']  # add other handles here
 method_name = 'user.info'
 params = {
     'handles': ';'.join(handles)
