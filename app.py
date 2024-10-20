@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from getUserDetails import getUserList
-from apiHandler import get_url_using_auth, api_custom_call
 from getSolvedProblems import getSolvedProblemScore
 from pprint import pprint
 import time
@@ -8,7 +7,7 @@ import time
 app = Flask(__name__)
 PROB_COUNT_START_TIME = 1723260000 # 1729449000
 
-handles = ['qchaos', 'CrazyWarlord', 'HemckerOO7', 'OutOfFuel', 'AnhadIITIAN', 'mst_molik', 'b23230']  # add other handles here
+handles = ['qchaos', 'b23230']  # add other handles here
 method_name = 'user.info'
 params = {
     'handles': ';'.join(handles)
