@@ -57,7 +57,7 @@ def getSolvedProblemScore(handle, afterTime=0):
     for name, rating in probset:
         # print(f'{name:<40} {rating}')
         if rating is not None:
-            score += rating // 100
+            score += 50 + 4 * int((rating-800)**2 // 6400)
             # score += int(1.5**(rating - 800 // 100))
 
     return score
