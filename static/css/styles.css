@@ -1,70 +1,90 @@
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
+  height: 200px;
+  object-fit: cover;
 }
 .card-body {
-    text-align: center;
+  text-align: center;
 }
 
-.user-card a{
-    color: white;
+.user-card a {
+  color: white;
 }
 .user-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 300px;
-    background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 300px;
+  background-color: #f8f9fa;
 }
 
 .user-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
 }
 
 .user-card .info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: black;
-    padding: 5px 10px;
-    transition: all 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
 }
 
 .user-card .info h5 {
-    margin: 0;
+  margin: 0;
 }
 
 .user-card:hover img {
-    filter: blur(5px) brightness(80%);
+  filter: blur(5px) brightness(80%);
 }
 
 .user-card:hover .info {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .user-card .details {
-    display: none;
-    position: absolute;
-    top: 90%;
-    left: 10%;
-    width: 80%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    transition: all 0.3s ease;
-    border-radius: 20px;
+  display: none;
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  width: 80%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
 .user-card:hover .details {
-    display: block;
-    top: 20%;
+  display: block;
+  top: 20%;
+}
+/* Ensures the table scrolls horizontally on small screens */
+.table-responsive {
+  width: 100%; /* Full width of the parent container */
+  overflow-x: auto; /* Enables horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  padding-left: 1rem; /* Add padding on the left */
+  padding-right: 1rem; /* Add padding on the right */
+}
+
+/* Adjust table layout for small screens */
+@media (max-width: 576px) {
+  .table {
+    min-width: 100%; /* Ensures table fits at least the screen width */
+  }
+
+  th,
+  td {
+    white-space: nowrap; /* Prevents text from wrapping */
+  }
 }
